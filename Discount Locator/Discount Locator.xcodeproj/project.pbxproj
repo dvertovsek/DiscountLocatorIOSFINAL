@@ -27,6 +27,10 @@
 		521446A51C2726250096D238 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521446A41C2726250096D238 /* Settings.swift */; };
 		522DEE6A1C09DE28000B9191 /* DiscountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522DEE691C09DE28000B9191 /* DiscountsViewController.swift */; };
 		522DEE6C1C0A0CA8000B9191 /* StoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522DEE6B1C0A0CA8000B9191 /* StoreTableViewCell.swift */; };
+		523FBF3A1C5135AF004CC914 /* Discount_LocatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523FBF391C5135AF004CC914 /* Discount_LocatorTests.swift */; };
+		523FBF421C513786004CC914 /* WebServiceUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523FBF411C513786004CC914 /* WebServiceUnitTests.swift */; };
+		523FBF441C513C9D004CC914 /* CoreUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523FBF431C513C9D004CC914 /* CoreUnitTests.swift */; };
+		523FBF4C1C539C80004CC914 /* Discount_LocatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523FBF4B1C539C80004CC914 /* Discount_LocatorUITests.swift */; };
 		52429C891BF631FA00069D37 /* core.h in Headers */ = {isa = PBXBuildFile; fileRef = 52429C881BF631FA00069D37 /* core.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		52429C8D1BF631FA00069D37 /* core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52429C861BF631FA00069D37 /* core.framework */; };
 		52429C8E1BF631FA00069D37 /* core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 52429C861BF631FA00069D37 /* core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -56,6 +60,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 520F1A161BF285C500A25520;
 			remoteInfo = db;
+		};
+		523FBF3C1C5135AF004CC914 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 520F19B51BF2818700A25520 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 520F19BC1BF2818700A25520;
+			remoteInfo = "Discount Locator";
+		};
+		523FBF4E1C539C80004CC914 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 520F19B51BF2818700A25520 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 520F19BC1BF2818700A25520;
+			remoteInfo = "Discount Locator";
 		};
 		52429C8B1BF631FA00069D37 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -112,6 +130,14 @@
 		521446A41C2726250096D238 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = "Discount Locator/Settings.swift"; sourceTree = "<group>"; };
 		522DEE691C09DE28000B9191 /* DiscountsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscountsViewController.swift; sourceTree = "<group>"; };
 		522DEE6B1C0A0CA8000B9191 /* StoreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreTableViewCell.swift; sourceTree = "<group>"; };
+		523FBF371C5135AF004CC914 /* Discount LocatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Discount LocatorTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		523FBF391C5135AF004CC914 /* Discount_LocatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Discount_LocatorTests.swift; sourceTree = "<group>"; };
+		523FBF3B1C5135AF004CC914 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		523FBF411C513786004CC914 /* WebServiceUnitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebServiceUnitTests.swift; sourceTree = "<group>"; };
+		523FBF431C513C9D004CC914 /* CoreUnitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreUnitTests.swift; sourceTree = "<group>"; };
+		523FBF491C539C80004CC914 /* Discount LocatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Discount LocatorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		523FBF4B1C539C80004CC914 /* Discount_LocatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Discount_LocatorUITests.swift; sourceTree = "<group>"; };
+		523FBF4D1C539C80004CC914 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52429C861BF631FA00069D37 /* core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52429C881BF631FA00069D37 /* core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = core.h; sourceTree = "<group>"; };
 		52429C8A1BF631FA00069D37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -157,6 +183,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		523FBF341C5135AF004CC914 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		523FBF461C539C80004CC914 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		52429C821BF631FA00069D37 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -181,6 +221,8 @@
 				520F1A181BF285C600A25520 /* db */,
 				52E0A8F41BF286F4008A8A4F /* ws */,
 				52429C871BF631FA00069D37 /* core */,
+				523FBF381C5135AF004CC914 /* Discount LocatorTests */,
+				523FBF4A1C539C80004CC914 /* Discount LocatorUITests */,
 				520F19BE1BF2818700A25520 /* Products */,
 				F41F7F2C0B6DD2AD80B365FD /* Pods */,
 				8EA5D5666345783A2213EF3C /* Frameworks */,
@@ -194,6 +236,8 @@
 				520F1A171BF285C500A25520 /* db.framework */,
 				52E0A8F31BF286F4008A8A4F /* ws.framework */,
 				52429C861BF631FA00069D37 /* core.framework */,
+				523FBF371C5135AF004CC914 /* Discount LocatorTests.xctest */,
+				523FBF491C539C80004CC914 /* Discount LocatorUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -225,6 +269,26 @@
 				520F1A1B1BF285C600A25520 /* Info.plist */,
 			);
 			path = db;
+			sourceTree = "<group>";
+		};
+		523FBF381C5135AF004CC914 /* Discount LocatorTests */ = {
+			isa = PBXGroup;
+			children = (
+				523FBF391C5135AF004CC914 /* Discount_LocatorTests.swift */,
+				523FBF3B1C5135AF004CC914 /* Info.plist */,
+				523FBF411C513786004CC914 /* WebServiceUnitTests.swift */,
+				523FBF431C513C9D004CC914 /* CoreUnitTests.swift */,
+			);
+			path = "Discount LocatorTests";
+			sourceTree = "<group>";
+		};
+		523FBF4A1C539C80004CC914 /* Discount LocatorUITests */ = {
+			isa = PBXGroup;
+			children = (
+				523FBF4B1C539C80004CC914 /* Discount_LocatorUITests.swift */,
+				523FBF4D1C539C80004CC914 /* Info.plist */,
+			);
+			path = "Discount LocatorUITests";
 			sourceTree = "<group>";
 		};
 		52429C871BF631FA00069D37 /* core */ = {
@@ -379,6 +443,42 @@
 			productReference = 520F1A171BF285C500A25520 /* db.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		523FBF361C5135AF004CC914 /* Discount LocatorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 523FBF401C5135AF004CC914 /* Build configuration list for PBXNativeTarget "Discount LocatorTests" */;
+			buildPhases = (
+				523FBF331C5135AF004CC914 /* Sources */,
+				523FBF341C5135AF004CC914 /* Frameworks */,
+				523FBF351C5135AF004CC914 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				523FBF3D1C5135AF004CC914 /* PBXTargetDependency */,
+			);
+			name = "Discount LocatorTests";
+			productName = "Discount LocatorTests";
+			productReference = 523FBF371C5135AF004CC914 /* Discount LocatorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		523FBF481C539C80004CC914 /* Discount LocatorUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 523FBF501C539C80004CC914 /* Build configuration list for PBXNativeTarget "Discount LocatorUITests" */;
+			buildPhases = (
+				523FBF451C539C80004CC914 /* Sources */,
+				523FBF461C539C80004CC914 /* Frameworks */,
+				523FBF471C539C80004CC914 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				523FBF4F1C539C80004CC914 /* PBXTargetDependency */,
+			);
+			name = "Discount LocatorUITests";
+			productName = "Discount LocatorUITests";
+			productReference = 523FBF491C539C80004CC914 /* Discount LocatorUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		52429C851BF631FA00069D37 /* core */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 52429C911BF631FA00069D37 /* Build configuration list for PBXNativeTarget "core" */;
@@ -421,7 +521,7 @@
 		520F19B51BF2818700A25520 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0710;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = air;
 				TargetAttributes = {
@@ -432,6 +532,16 @@
 					520F1A161BF285C500A25520 = {
 						CreatedOnToolsVersion = 7.1;
 						DevelopmentTeam = DY9FXK85NV;
+					};
+					523FBF361C5135AF004CC914 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = PCHFX9J3RC;
+						TestTargetID = 520F19BC1BF2818700A25520;
+					};
+					523FBF481C539C80004CC914 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = PCHFX9J3RC;
+						TestTargetID = 520F19BC1BF2818700A25520;
 					};
 					52429C851BF631FA00069D37 = {
 						CreatedOnToolsVersion = 7.1;
@@ -460,6 +570,8 @@
 				520F1A161BF285C500A25520 /* db */,
 				52E0A8F21BF286F4008A8A4F /* ws */,
 				52429C851BF631FA00069D37 /* core */,
+				523FBF361C5135AF004CC914 /* Discount LocatorTests */,
+				523FBF481C539C80004CC914 /* Discount LocatorUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -476,6 +588,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		520F1A151BF285C500A25520 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		523FBF351C5135AF004CC914 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		523FBF471C539C80004CC914 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -584,6 +710,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		523FBF331C5135AF004CC914 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				523FBF441C513C9D004CC914 /* CoreUnitTests.swift in Sources */,
+				523FBF421C513786004CC914 /* WebServiceUnitTests.swift in Sources */,
+				523FBF3A1C5135AF004CC914 /* Discount_LocatorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		523FBF451C539C80004CC914 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				523FBF4C1C539C80004CC914 /* Discount_LocatorUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		52429C811BF631FA00069D37 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -609,6 +753,16 @@
 			isa = PBXTargetDependency;
 			target = 520F1A161BF285C500A25520 /* db */;
 			targetProxy = 520F1A1C1BF285C600A25520 /* PBXContainerItemProxy */;
+		};
+		523FBF3D1C5135AF004CC914 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 520F19BC1BF2818700A25520 /* Discount Locator */;
+			targetProxy = 523FBF3C1C5135AF004CC914 /* PBXContainerItemProxy */;
+		};
+		523FBF4F1C539C80004CC914 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 520F19BC1BF2818700A25520 /* Discount Locator */;
+			targetProxy = 523FBF4E1C539C80004CC914 /* PBXContainerItemProxy */;
 		};
 		52429C8C1BF631FA00069D37 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -662,6 +816,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -708,6 +863,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -810,6 +966,58 @@
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		523FBF3E1C5135AF004CC914 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Discount LocatorTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "air.hr.foi.Discount-Locator.Discount-LocatorTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Discount Locator.app/Discount Locator";
+			};
+			name = Debug;
+		};
+		523FBF3F1C5135AF004CC914 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Discount LocatorTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "air.hr.foi.Discount-Locator.Discount-LocatorTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Discount Locator.app/Discount Locator";
+			};
+			name = Release;
+		};
+		523FBF511C539C80004CC914 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Discount LocatorUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "air.hr.foi.Discount-Locator.Discount-LocatorUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Discount Locator";
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		523FBF521C539C80004CC914 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Discount LocatorUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "air.hr.foi.Discount-Locator.Discount-LocatorUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Discount Locator";
+				USES_XCTRUNNER = YES;
 			};
 			name = Release;
 		};
@@ -936,6 +1144,23 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		523FBF401C5135AF004CC914 /* Build configuration list for PBXNativeTarget "Discount LocatorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				523FBF3E1C5135AF004CC914 /* Debug */,
+				523FBF3F1C5135AF004CC914 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		523FBF501C539C80004CC914 /* Build configuration list for PBXNativeTarget "Discount LocatorUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				523FBF511C539C80004CC914 /* Debug */,
+				523FBF521C539C80004CC914 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		52429C911BF631FA00069D37 /* Build configuration list for PBXNativeTarget "core" */ = {
 			isa = XCConfigurationList;

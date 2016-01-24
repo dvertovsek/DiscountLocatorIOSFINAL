@@ -3,16 +3,15 @@ import db
 import Kingfisher
 import RealmSwift
 
-class ViewController: UITableViewController {
+public class ViewController: UITableViewController {
     
     @IBOutlet weak var storesTableView: UITableView!
     
     var webServiceDataLoader = WebServiceDataLoader()
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
      
-        
         checkIfUserDefaultsAreSet()
         
         Realm.Configuration.defaultConfiguration = Realm.Configuration(
@@ -22,25 +21,23 @@ class ViewController: UITableViewController {
         
         webServiceDataLoader.storesTableView = self.storesTableView
 
-      
-
         webServiceDataLoader.LoadData()
         self.animationCheck() //gasi animacije pošto je initial view controller
         
     }
     
-    override func didReceiveMemoryWarning() {
+    public override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return webServiceDataLoader.stores.count
         
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    public override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! StoreTableViewCell
         
@@ -80,7 +77,7 @@ class ViewController: UITableViewController {
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    public override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ShowDiscountsSegue" {
             if let destination = segue.destinationViewController as? DiscountsViewController {
                 if let storeIndex = tableView.indexPathForSelectedRow {
