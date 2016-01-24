@@ -10,16 +10,19 @@ import Foundation
 
 import RealmSwift
 
-class Discount: Object
+public class Discount: Object
 {
-    dynamic var remoteId: Int = 0
+    public dynamic var storeId: String = ""
     
-    dynamic var name: String = ""
+    public dynamic var name: String = ""
+    public dynamic var desc: String = ""
+    public dynamic var discount: Int = 0
+    public dynamic var startDate: String = ""
+    public dynamic var endDate: String = ""
     
+    public dynamic var store: Store?
     
-    dynamic var store: Store?
-    
-    func storeSet(s: Store)
+    public func storeSet(s: Store)
     {
         self.store = s
     }

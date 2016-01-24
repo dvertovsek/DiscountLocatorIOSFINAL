@@ -10,19 +10,20 @@ import Foundation
 
 import RealmSwift
 
-class Store: Object
+public class Store: Object
 {
-    dynamic var remoteId: Int = 0
+    public dynamic var remoteId: String = ""
     
-    dynamic var name: String = ""
-    dynamic var desc: String = ""
-    dynamic var imgUrl: String = ""
+    public dynamic var name: String = ""
+    public dynamic var desc: String = ""
+    public dynamic var imgUrl: String = ""
     
-    dynamic var longitude: Int = 0
-    dynamic var latitude: Int = 0
+    public dynamic var longitude: Float = 0
+    public dynamic var latitude: Float = 0
     
-    var discounts: [Discount]
+    public var discounts: [Discount]
     {
         return linkingObjects(Discount.self, forProperty: "store")
     }
+    
 }

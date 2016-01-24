@@ -2,7 +2,7 @@
 //  db.h
 //  db
 //
-//  Created by MTLab on 04/11/15.
+//  Created by Faculty of Organisation and Informatics on 10/11/15.
 //  Copyright © 2015 air. All rights reserved.
 //
 
