@@ -8,7 +8,6 @@ class DiscountsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -30,6 +29,22 @@ class DiscountsViewController: UITableViewController {
         cell.detailTextLabel!.text = self.discounts![indexPath.row].desc
         
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let title = "📈 " + discounts![indexPath.row].name + " : " + String(discounts![indexPath.row].discount) + "%"
+        
+        var message = discounts![indexPath.row].desc + "\n\n"
+        message += "📅 " + discounts![indexPath.row].startDate + "\n"
+        message +=  "📅 " + discounts![indexPath.row].endDate + "\n"
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.Default, handler: nil))
+        
+        presentViewController(alert, animated: true, completion: nil)
+        
+        print(indexPath.row)
     }
     
 }

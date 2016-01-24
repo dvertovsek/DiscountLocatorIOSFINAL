@@ -12,7 +12,9 @@ import RealmSwift
 
 public class Discount: Object
 {
-    public dynamic var storeId: String = ""
+    public dynamic var remoteId: Int = 0
+    
+    public dynamic var storeId: Int = 0
     
     public dynamic var name: String = ""
     public dynamic var desc: String = ""

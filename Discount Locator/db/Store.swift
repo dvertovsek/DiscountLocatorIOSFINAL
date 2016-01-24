@@ -12,7 +12,7 @@ import RealmSwift
 
 public class Store: Object
 {
-    public dynamic var remoteId: String = ""
+    public dynamic var remoteId: Int = 0
     
     public dynamic var name: String = ""
     public dynamic var desc: String = ""
@@ -22,8 +22,8 @@ public class Store: Object
     public dynamic var latitude: Float = 0
     
     public var discounts: [Discount]
-    {
-        return linkingObjects(Discount.self, forProperty: "store")
+        {
+            return linkingObjects(Discount.self, forProperty: "store")
     }
     
 }

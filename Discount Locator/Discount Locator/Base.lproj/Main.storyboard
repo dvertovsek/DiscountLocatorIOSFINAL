@@ -3,8 +3,27 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Item-->
+        <scene sceneID="iHt-iN-XoT">
+            <objects>
+                <navigationController id="ReX-o4-gbz" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="aP3-4v-dYx"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="E8c-cD-bH5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Knp-jj-3BT" kind="relationship" relationship="rootViewController" id="Xbi-S6-Py0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DtD-rR-I2e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1554" y="65"/>
+        </scene>
         <!--Stores-->
         <scene sceneID="rFn-aI-AiF">
             <objects>
@@ -120,7 +139,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="UeC-H8-bsv">
             <objects>
-                <tabBarController id="oFb-Xh-Se4" sceneMemberID="viewController">
+                <tabBarController id="oFb-Xh-Se4" customClass="TabBarController" customModule="Discount_Locator" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="w6e-0c-Dy3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -129,17 +148,17 @@
                     </tabBar>
                     <connections>
                         <segue destination="g8L-jc-dGu" kind="relationship" relationship="viewControllers" id="Aei-dG-J5y"/>
-                        <segue destination="Knp-jj-3BT" kind="relationship" relationship="viewControllers" id="48K-4e-E67"/>
+                        <segue destination="ReX-o4-gbz" kind="relationship" relationship="viewControllers" id="FRo-1Y-cCL"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuS-Qb-4Uw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1104" y="-818"/>
         </scene>
-        <!--Item-->
+        <!--Map View Controller-->
         <scene sceneID="UPM-1a-gld">
             <objects>
-                <viewController id="Knp-jj-3BT" sceneMemberID="viewController">
+                <viewController id="Knp-jj-3BT" customClass="MapViewController" customModule="Discount_Locator" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QNA-Oz-82E"/>
                         <viewControllerLayoutGuide type="bottom" id="qUg-sz-isR"/>
@@ -147,14 +166,30 @@
                     <view key="view" contentMode="scaleToFill" id="n5Z-Kc-2fs">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="pjJ-GA-PJj">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <animations/>
+                            </mapView>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="pjJ-GA-PJj" secondAttribute="trailing" constant="-20" id="Ils-Kq-AL9"/>
+                            <constraint firstItem="pjJ-GA-PJj" firstAttribute="leading" secondItem="n5Z-Kc-2fs" secondAttribute="leadingMargin" constant="-20" id="XbG-h0-CTy"/>
+                            <constraint firstItem="qUg-sz-isR" firstAttribute="top" secondItem="pjJ-GA-PJj" secondAttribute="bottom" id="ape-FG-x4F"/>
+                            <constraint firstItem="pjJ-GA-PJj" firstAttribute="top" secondItem="QNA-Oz-82E" secondAttribute="bottom" constant="-20" id="ywG-bL-gI9"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="PCD-9E-Y5E"/>
+                    <navigationItem key="navigationItem" id="ecc-mJ-YJC"/>
+                    <connections>
+                        <outlet property="mapView" destination="pjJ-GA-PJj" id="bu8-mu-Wck"/>
+                        <segue destination="VxX-Bz-t46" kind="show" identifier="onBasharSegue" id="Cmr-lk-VRP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eU8-ah-dYy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-812" y="105"/>
+            <point key="canvasLocation" x="-1094" y="965"/>
         </scene>
         <!--Item-->
         <scene sceneID="ut1-Id-7iY">
@@ -175,4 +210,7 @@
             <point key="canvasLocation" x="-164" y="-818"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Cmr-lk-VRP"/>
+    </inferredMetricsTieBreakers>
 </document>

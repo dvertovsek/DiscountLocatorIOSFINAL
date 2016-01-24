@@ -47,6 +47,12 @@ public class DbController
             self.realm.add(o)
         }
     }
+    
+    public func realmFetch(o: Object.Type) -> Results<Object>
+    {
+        let data = self.realm.objects(o)
+        return data
+    }
 }
 
 

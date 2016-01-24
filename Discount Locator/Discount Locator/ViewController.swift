@@ -12,13 +12,16 @@ class ViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
      
+        
         Realm.Configuration.defaultConfiguration = Realm.Configuration(
-            schemaVersion: 1,
+            schemaVersion: 2,
             migrationBlock: { migration, oldSchemaVersion in
         })
         
         webServiceDataLoader.storesTableView = self.storesTableView
+        webServiceDataLoader.tabViewTabBar = self.tabBarController as! TabBarController
         webServiceDataLoader.LoadData()
+
         
     }
 
@@ -46,8 +49,6 @@ class ViewController: UITableViewController {
         
         return cell
     }
-    
-    
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ShowDiscountsSegue" {

@@ -17,50 +17,68 @@ public class WebServiceDataLoader:DataLoader
     public var discounts: [Discount] = []
     public var storesTableView: UITableView?
     
+    private var discountsLoaded: Bool = false
+    private var storesLoaded: Bool = false
+    
+    internal var tabViewTabBar: TabBarController?
+    
     public func LoadData() {
-<<<<<<< HEAD
-//        HTTPRequest.sharedWSInstance.httprequest("http://www.json-generator.com/api/json/get/csbvEnjqnC")
-//            {
-//                (result: AnyObject) in
-//                self.stores = JsonAdapter.getStores(result)
-//                self.storesLoaded = true
-//                self.showLoadedData()
-//        }
-//        HTTPRequest.sharedWSInstance.httprequest("http://www.json-generator.com/api/json/get/ccWtDCAmRe")
-//            {
-//                (result: AnyObject) in
-//                self.discounts = JsonAdapter.getDiscounts(result)
-//                self.discountsLoaded = true
-//                self.showLoadedData()
-//        }
-=======
-        HTTPRequest.sharedWSInstance.httprequest("https://obscure-lake-7668.herokuapp.com/stores")
-            {
-                (result: AnyObject) in
-                let result = JsonAdapter.getStores(result)
-                self.stores = result.stores
-                self.discounts = result.discounts
-                self.showLoadedData()
+        var params:[String:String] = ["method": "getAll"]
+        if(NetConnection.Connection.isConnectedToNetwork()){
+            
+            HTTPRequest.sharedWSInstance.httprequest("http://cortex.foi.hr/mtl/courses/air/stores.php", params: params)
+                        {
+                            (result: AnyObject) in
+                            self.stores = JsonAdapter.getStores(result)
+                            self.storesLoaded = true
+                            self.showLoadedData()
+                    }
+            HTTPRequest.sharedWSInstance.httprequest("http://cortex.foi.hr/mtl/courses/air/discounts.php", params: params)
+                        {
+                            (result: AnyObject) in
+                            self.discounts = JsonAdapter.getDiscounts(result)
+                            self.discountsLoaded = true
+                            self.showLoadedData()
+                    }
         }
->>>>>>> WebService
+        else {
+            self.showDataFromLocalDB()
+        }
     }
+    
     
     private func showLoadedData()
     {
-        self.bindData()
+        if(storesLoaded && discountsLoaded)
+        {
+            self.bindData()
+            storesTableView?.reloadData()
+            tabViewTabBar?.tabBar.items![1].enabled=true
+        }
+    }
+    
+    private func showDataFromLocalDB()
+    {
+        let stores = DbController.sharedDBInstance.realmFetch(Store)
+        let discounts = DbController.sharedDBInstance.realmFetch(Discount)
+        
+        for store in stores{
+            self.stores.append(store as! Store)
+        }
+        for discount in discounts{
+            self.discounts.append(discount as! Discount)
+        }
         storesTableView?.reloadData()
     }
 
     private func bindData()
     {
-        
         DbController.sharedDBInstance.realm.beginWrite()
         DbController.sharedDBInstance.realm.deleteAll()
         try! DbController.sharedDBInstance.realm.commitWrite()
 
         for store in stores
         {
-
             DbController.sharedDBInstance.realmAdd(store)
             for discount in discounts
             {

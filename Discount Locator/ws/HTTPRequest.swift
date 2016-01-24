@@ -12,9 +12,9 @@ public class HTTPRequest
 {
     public static var sharedWSInstance = HTTPRequest()
     
-    public func httprequest(url: String, completion: (result: AnyObject) -> Void)
+    public func httprequest(url: String, params: [String:String], completion: (result: AnyObject) -> Void)
     {
-        Alamofire.request(.GET, url)
+        Alamofire.request(.POST, url, parameters: params)
             .responseJSON { response in
                 if let json = response.result.value{
                 
