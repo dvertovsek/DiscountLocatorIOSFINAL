@@ -30,10 +30,12 @@
 		52429C931BF6321200069D37 /* JsonAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52429C921BF6321200069D37 /* JsonAdapter.swift */; };
 		52429C981BF687F500069D37 /* WebServiceDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52429C971BF687F500069D37 /* WebServiceDataLoader.swift */; };
 		52429C9A1BF68EC200069D37 /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52429C991BF68EC200069D37 /* DataLoader.swift */; };
+		524BF9C91C2377C600AFAA27 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 524BF9C81C2377C600AFAA27 /* SWRevealViewController.m */; };
+		524BF9CB1C2379CD00AFAA27 /* VcNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524BF9CA1C2379CD00AFAA27 /* VcNav.swift */; };
+		524BF9CD1C237DB800AFAA27 /* BackTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524BF9CC1C237DB800AFAA27 /* BackTableVC.swift */; };
 		52B995911C18C532000B34DA /* NetConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B995901C18C532000B34DA /* NetConnection.swift */; };
 		52DCF9761C18C17C005C3E95 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DCF9751C18C17C005C3E95 /* MapViewController.swift */; };
 		52DCF9781C18CB6A005C3E95 /* Artwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DCF9771C18CB6A005C3E95 /* Artwork.swift */; };
-		52DCF97A1C18D5E6005C3E95 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DCF9791C18D5E6005C3E95 /* TabBarController.swift */; };
 		52E0A8F61BF286F4008A8A4F /* ws.h in Headers */ = {isa = PBXBuildFile; fileRef = 52E0A8F51BF286F4008A8A4F /* ws.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		52E0A8FA1BF286F4008A8A4F /* ws.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52E0A8F31BF286F4008A8A4F /* ws.framework */; };
 		52E0A8FB1BF286F4008A8A4F /* ws.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 52E0A8F31BF286F4008A8A4F /* ws.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -107,11 +109,14 @@
 		52429C921BF6321200069D37 /* JsonAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonAdapter.swift; sourceTree = "<group>"; };
 		52429C971BF687F500069D37 /* WebServiceDataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebServiceDataLoader.swift; sourceTree = "<group>"; };
 		52429C991BF68EC200069D37 /* DataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
+		524BF9C61C2377C500AFAA27 /* Discount Locator-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Discount Locator-Bridging-Header.h"; sourceTree = "<group>"; };
+		524BF9C71C2377C600AFAA27 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		524BF9C81C2377C600AFAA27 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		524BF9CA1C2379CD00AFAA27 /* VcNav.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VcNav.swift; sourceTree = "<group>"; };
+		524BF9CC1C237DB800AFAA27 /* BackTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackTableVC.swift; sourceTree = "<group>"; };
 		52B995901C18C532000B34DA /* NetConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetConnection.swift; sourceTree = "<group>"; };
-
 		52DCF9751C18C17C005C3E95 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		52DCF9771C18CB6A005C3E95 /* Artwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Artwork.swift; sourceTree = "<group>"; };
-		52DCF9791C18D5E6005C3E95 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		52E0A8F31BF286F4008A8A4F /* ws.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ws.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52E0A8F51BF286F4008A8A4F /* ws.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ws.h; sourceTree = "<group>"; };
 		52E0A8F71BF286F4008A8A4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -189,13 +194,17 @@
 				52DCF9751C18C17C005C3E95 /* MapViewController.swift */,
 				522DEE6B1C0A0CA8000B9191 /* StoreTableViewCell.swift */,
 				520F19C41BF2818700A25520 /* Main.storyboard */,
+				524BF9CC1C237DB800AFAA27 /* BackTableVC.swift */,
 				522DEE691C09DE28000B9191 /* DiscountsViewController.swift */,
+				524BF9CA1C2379CD00AFAA27 /* VcNav.swift */,
 				520F19C71BF2818700A25520 /* Assets.xcassets */,
 				520F19C91BF2818700A25520 /* LaunchScreen.storyboard */,
 				520F19CC1BF2818700A25520 /* Info.plist */,
 				52429C971BF687F500069D37 /* WebServiceDataLoader.swift */,
 				52DCF9771C18CB6A005C3E95 /* Artwork.swift */,
-				52DCF9791C18D5E6005C3E95 /* TabBarController.swift */,
+				524BF9C71C2377C600AFAA27 /* SWRevealViewController.h */,
+				524BF9C81C2377C600AFAA27 /* SWRevealViewController.m */,
+				524BF9C61C2377C500AFAA27 /* Discount Locator-Bridging-Header.h */,
 			);
 			path = "Discount Locator";
 			sourceTree = "<group>";
@@ -495,11 +504,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				524BF9CB1C2379CD00AFAA27 /* VcNav.swift in Sources */,
 				520F19C31BF2818700A25520 /* ViewController.swift in Sources */,
-				52DCF97A1C18D5E6005C3E95 /* TabBarController.swift in Sources */,
 				52DCF9761C18C17C005C3E95 /* MapViewController.swift in Sources */,
 				52DCF9781C18CB6A005C3E95 /* Artwork.swift in Sources */,
+				524BF9CD1C237DB800AFAA27 /* BackTableVC.swift in Sources */,
 				520F19C11BF2818700A25520 /* AppDelegate.swift in Sources */,
+				524BF9C91C2377C600AFAA27 /* SWRevealViewController.m in Sources */,
 				522DEE6A1C09DE28000B9191 /* DiscountsViewController.swift in Sources */,
 				52429C981BF687F500069D37 /* WebServiceDataLoader.swift in Sources */,
 				522DEE6C1C0A0CA8000B9191 /* StoreTableViewCell.swift in Sources */,
@@ -666,11 +677,14 @@
 			baseConfigurationReference = D85B9AC2342FC4FB7F909B08 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "Discount Locator/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "air.hr.foi.Discount-Locator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Discount Locator/Discount Locator-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -679,11 +693,13 @@
 			baseConfigurationReference = 804F51C96AAC8963F034DD40 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "Discount Locator/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "air.hr.foi.Discount-Locator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Discount Locator/Discount Locator-Bridging-Header.h";
 			};
 			name = Release;
 		};

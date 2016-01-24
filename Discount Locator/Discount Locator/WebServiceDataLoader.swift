@@ -17,10 +17,11 @@ public class WebServiceDataLoader:DataLoader
     public var discounts: [Discount] = []
     public var storesTableView: UITableView?
     
+
     private var discountsLoaded: Bool = false
     private var storesLoaded: Bool = false
     
-    internal var tabViewTabBar: TabBarController?
+
     
     public func LoadData() {
         var params:[String:String] = ["method": "getAll"]
@@ -49,12 +50,13 @@ public class WebServiceDataLoader:DataLoader
     
     private func showLoadedData()
     {
-        if(storesLoaded && discountsLoaded)
-        {
+
+        if(self.storesLoaded && self.discountsLoaded){
             self.bindData()
             storesTableView?.reloadData()
-            tabViewTabBar?.tabBar.items![1].enabled=true
         }
+       
+        
     }
     
     private func showDataFromLocalDB()
@@ -79,6 +81,7 @@ public class WebServiceDataLoader:DataLoader
 
         for store in stores
         {
+            print(DbController.sharedDBInstance)
             DbController.sharedDBInstance.realmAdd(store)
             for discount in discounts
             {
