@@ -12,7 +12,9 @@ class ApplicationSettingsTableViewController: UITableViewController {
     
     @IBOutlet var enableWSSwitch: UISwitch!
     @IBOutlet var notificationServiceSwtich: UISwitch!
-    var prefs = NSUserDefaults()
+    
+    var prefs = NSUserDefaults.standardUserDefaults()
+    
     @IBAction func onEnableWSChange(sender: UISwitch) {
         prefs.setBool(sender.on, forKey: "EnableWebService")
     }

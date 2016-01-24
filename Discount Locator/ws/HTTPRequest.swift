@@ -8,6 +8,8 @@
 import Alamofire
 import SwiftyJSON
 
+
+
 public class HTTPRequest
 {
     public static var sharedWSInstance = HTTPRequest()

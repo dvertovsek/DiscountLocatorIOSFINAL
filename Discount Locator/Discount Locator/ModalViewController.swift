@@ -11,8 +11,6 @@ import db
 
 class ModalViewController: UIViewController {
 
-    
-    var webServiceDataLoader = WebServiceDataLoader()
     @IBAction func onClose(sender: UIButton) {
         self.dismissViewControllerAnimated(true, completion: {});
 
@@ -28,23 +26,7 @@ class ModalViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) { //slanje podataka searchDiscountTableViewControlleru
-        
-       if segue.identifier == "onSearchDiscountsSegue" {
-        if let destination = segue.destinationViewController as? UINavigationController {
-                   var discountsForPassing: [Discount] = []
-        let discounts = DbController.sharedDBInstance.realmFetch(Discount)
-        for discount in discounts{
-            discountsForPassing.append(discount as! Discount)
-        }
-            //pošto segue ide u navigController treba ga prvo dohvatit pa iz njega pripadajući view kojem predajemo discounte
-            let searchViewcontroller = destination.viewControllers.first as! SearchDiscountsTabeViewController
-            searchViewcontroller.discounts = discountsForPassing
-        }
-    }
-        
-    }
+   
 
     /*
     // MARK: - Navigation

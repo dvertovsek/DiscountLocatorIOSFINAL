@@ -28,7 +28,7 @@ class ViewController: UITableViewController {
         self.animationCheck() //gasi animacije pošto je initial view controller
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

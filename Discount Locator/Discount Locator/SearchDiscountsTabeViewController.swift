@@ -20,6 +20,8 @@ class SearchDiscountsTabeViewController: UITableViewController, UISearchResultsU
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        discounts = DbController.sharedDBInstance.realm.objects(Discount).reverse()
         //custom backswipe pošto smo došli iz modalviewa na
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         self.navigationController?.interactivePopGestureRecognizer?.addTarget(self, action: "handleGesture:")
