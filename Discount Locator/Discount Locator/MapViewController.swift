@@ -4,7 +4,7 @@ import db
 import CoreLocation
 import iAd
 
-class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var bannerView: ADBannerView!
     @IBOutlet weak var mapView: MKMapView!
@@ -17,6 +17,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     var storeRadiusInMeters: Double = Double(NSUserDefaults().integerForKey("StoreRadius"))
     let locationManager = CLLocationManager()
     var currentLocation = CLLocation()
+    var currCircle = MKCircle()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,7 +29,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         let stores = DbController.sharedDBInstance.realm.objects(Store)
         self.stores = stores.reverse()
         
-        //get users location 
+        //get users location
         // Ask for Authorisation from the User.
         self.locationManager.requestAlwaysAuthorization()
         
@@ -47,18 +49,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         bannerView.delegate = self
         bannerView.hidden = true
         
+        addRadiusCircle(currentLocation)
+        
     }
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        let location = locations.last! as CLLocation
-        
-        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-        
-        self.mapView.setRegion(region, animated: true)
-    }
-
+    
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        
         if control == view.rightCalloutAccessoryView{
             print(view.annotation!.title) // annotation's title
             print(view.annotation!.subtitle) // annotation's subttitle
@@ -66,6 +62,20 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             
             performSegueWithIdentifier("onShowDiscountSegue", sender: nil)
         }
+    }
+    
+    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
+        let circle = MKCircleRenderer(overlay: overlay)
+        circle.strokeColor = UIColor.blueColor()
+        circle.fillColor = UIColor(red: 0, green: 255, blue: 0, alpha: 0.2)
+        circle.lineWidth = 1
+        return circle
+    }
+    
+    func addRadiusCircle(location: CLLocation){
+        let circle = MKCircle(centerCoordinate: location.coordinate, radius: Double(NSUserDefaults.standardUserDefaults().integerForKey("StoreRadius")) as CLLocationDistance)
+        self.currCircle = circle
+        self.mapView.addOverlay(circle)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
@@ -90,7 +100,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     
     func generateAnnotations(){
-      
+        
         var annArray: [MKAnnotation] = []
         print("current radius is:", storeRadiusInMeters)
         for store in stores! {
@@ -109,11 +119,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
         mapView.addAnnotations(annArray)
         
-    
+        
     }
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         
-        
+        if annotation.isKindOfClass(mapView.userLocation.classForCoder)
+        {
+            return nil
+        }
         let reuseId = "pin"
         
         var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId)
@@ -144,5 +157,34 @@ extension MapViewController: ADBannerViewDelegate
     
     func bannerView(banner: ADBannerView!, didFailToReceiveAdWithError error: NSError!) {
         bannerView.hidden = true
+    }
+}
+
+extension MapViewController: CLLocationManagerDelegate
+{
+    
+    func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
+        self.locationManager.startUpdatingLocation()
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        self.locationManager.stopUpdatingLocation()
+        
+        let location = locations.last! as CLLocation
+        
+        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        
+        currentLocation = location
+        self.mapView.removeOverlay(self.currCircle)
+        addRadiusCircle(currentLocation)
+        
+        self.mapView.setRegion(region, animated: true)
+    }
+    
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        
+        self.locationManager.stopUpdatingLocation()
     }
 }
