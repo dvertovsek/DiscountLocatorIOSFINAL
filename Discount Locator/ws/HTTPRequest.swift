@@ -6,21 +6,25 @@
 //  Copyright © 2015 air. All rights reserved.
 //
 import Alamofire
-import SwiftyJSON
 
-
+public protocol WebServiceResultDelegate{
+    func getResult(json:AnyObject)
+}
 
 public class HTTPRequest
 {
-    public static var sharedWSInstance = HTTPRequest()
     
-    public func httprequest(url: String, params: [String:String], completion: (result: AnyObject) -> Void)
+    public var delegate:WebServiceResultDelegate?
+    
+    public init(){}
+    
+    public func httprequest(url: String, params: [String:String])
     {
         Alamofire.request(.POST, url, parameters: params)
             .responseJSON { response in
                 if let json = response.result.value{
                 
-                    completion(result: json)
+                    self.delegate?.getResult(json)
                 
                 }
         }

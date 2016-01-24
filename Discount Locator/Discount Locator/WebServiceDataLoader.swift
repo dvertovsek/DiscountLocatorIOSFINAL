@@ -23,25 +23,16 @@ public class WebServiceDataLoader:DataLoader
     
     private var prefs = NSUserDefaults()
 
+    var httpRequest = HTTPRequest()
     
     public func LoadData() {
-        var params:[String:String] = ["method": "getAll"]
+        
         if(NetConnection.Connection.isConnectedToNetwork() && prefs.boolForKey("EnableWebService")){
-            print("loadam s web servisa")
-            HTTPRequest.sharedWSInstance.httprequest("http://cortex.foi.hr/mtl/courses/air/stores.php", params: params)
-                        {
-                            (result: AnyObject) in
-                            self.stores = JsonAdapter.getStores(result)
-                            self.storesLoaded = true
-                            self.showLoadedData()
-                    }
-            HTTPRequest.sharedWSInstance.httprequest("http://cortex.foi.hr/mtl/courses/air/discounts.php", params: params)
-                        {
-                            (result: AnyObject) in
-                            self.discounts = JsonAdapter.getDiscounts(result)
-                            self.discountsLoaded = true
-                            self.showLoadedData()
-                    }
+            print("loadm sa web servisa")
+            
+            
+            httpRequest.delegate = self
+            httpRequest.httprequest("http://cortex.foi.hr/mtl/courses/air/stores.php", params: ["method": "getAll"])
         }
         else {
             print("loadam lokalno")
@@ -95,4 +86,21 @@ public class WebServiceDataLoader:DataLoader
             }
         }
     }
+}
+
+extension WebServiceDataLoader: WebServiceResultDelegate{
+    public func getResult(json: AnyObject) {
+        if(!storesLoaded){
+            storesLoaded = true
+            self.stores = JsonAdapter.getStores(json)
+            self.storesLoaded = true
+            self.showLoadedData()
+            httpRequest.httprequest("http://cortex.foi.hr/mtl/courses/air/discounts.php", params: ["method":"getAll"])
+        }else{
+            self.discounts = JsonAdapter.getDiscounts(json)
+            self.discountsLoaded = true
+            self.showLoadedData()
+        }
+    }
+
 }
