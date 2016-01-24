@@ -1,8 +1,9 @@
 import UIKit
 import MapKit
 import db
+import CoreLocation
 
-class MapViewController: UIViewController, MKMapViewDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -11,7 +12,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     var annotations: [MKAnnotation]?
     
     var senderView: MKAnnotationView?
-    
+    var storeRadiusInMeters: Double = Double(NSUserDefaults().integerForKey("StoreRadius"))
+    let locationManager = CLLocationManager()
+    var currentLocation = CLLocation()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,10 +25,33 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         let stores = DbController.sharedDBInstance.realm.objects(Store)
         self.stores = stores.reverse()
         
-        centerMapOnLocation(CLLocation(latitude: 46.310409, longitude: 16.343013))
+        //get users location 
+        // Ask for Authorisation from the User.
+        self.locationManager.requestAlwaysAuthorization()
         
+        // For use in foreground
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
+        mapView.showsUserLocation = true
+        currentLocation = CLLocation(latitude: 46.310409, longitude: 16.343013) //ZA PROBU
+        centerMapOnLocation(currentLocation)
         generateAnnotations()
+        
     }
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) { //centrira regiju ovisno o tvojoj poziciji, još ne treba
+//        let location = locations.last! as CLLocation
+//        
+//        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+//        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        
+        //self.mapView.setRegion(region, animated: true)
+    }
+
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView{
             print(view.annotation!.title) // annotation's title
@@ -63,23 +89,25 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     func generateAnnotations(){
       
         var annArray: [MKAnnotation] = []
-        
+        print("current radius is:", storeRadiusInMeters)
         for store in stores! {
             
-            let artwork = Artwork(title: store.name,
-                locationName: store.desc,
-                storeId: String(store.remoteId),
-                discipline: "NaN",
-                coordinate: CLLocationCoordinate2D(latitude: Double(store.latitude),longitude: Double(store.longitude) ))
-            annArray.append(artwork)
+            let location = CLLocation(latitude: Double(store.latitude), longitude: Double(store.longitude))
+            print("current distance for store is:",location.distanceFromLocation(currentLocation))
+            if(location.distanceFromLocation(currentLocation)<storeRadiusInMeters){
+                let artwork = Artwork(title: store.name,
+                    locationName: store.desc,
+                    storeId: String(store.remoteId),
+                    discipline: "NaN",
+                    coordinate: CLLocationCoordinate2D(latitude: Double(store.latitude),longitude: Double(store.longitude)))
+                annArray.append(artwork)
+            }
             
         }
-        
         mapView.addAnnotations(annArray)
         
     
     }
-    
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         
         
@@ -88,8 +116,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId)
         if(pinView == nil)
         {
-            print("prntview je nil")
-            
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             pinView?.canShowCallout = true
             

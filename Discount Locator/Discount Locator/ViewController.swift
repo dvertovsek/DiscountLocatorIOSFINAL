@@ -13,6 +13,8 @@ class ViewController: UITableViewController {
         super.viewDidLoad()
      
         
+        checkIfUserDefaultsAreSet()
+        
         Realm.Configuration.defaultConfiguration = Realm.Configuration(
             schemaVersion: 3,
             migrationBlock: { migration, oldSchemaVersion in
@@ -23,7 +25,7 @@ class ViewController: UITableViewController {
       
 
         webServiceDataLoader.LoadData()
-
+        self.animationCheck() //gasi animacije pošto je initial view controller
         
     }
 
@@ -52,6 +54,32 @@ class ViewController: UITableViewController {
         return cell
     }
 
+    private func checkIfUserDefaultsAreSet() {
+        
+        if NSUserDefaults.standardUserDefaults().objectForKey("useAnimations") == nil
+        {
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "useAnimations")
+        }
+        if NSUserDefaults.standardUserDefaults().objectForKey("useBackSwipe") == nil
+        {
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "useBackSwipe")
+        }
+        
+        if NSUserDefaults.standardUserDefaults().objectForKey("EnableWebService") == nil
+        {
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "EnableWebService")
+        }
+        if NSUserDefaults.standardUserDefaults().objectForKey("EnableNotificationService") == nil
+        {
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "EnableNotificationService")
+        }
+        
+        if NSUserDefaults.standardUserDefaults().objectForKey("StoreRadius") == nil
+        {
+            NSUserDefaults.standardUserDefaults().setInteger(100000, forKey: "StoreRadius")
+        }
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ShowDiscountsSegue" {
             if let destination = segue.destinationViewController as? DiscountsViewController {

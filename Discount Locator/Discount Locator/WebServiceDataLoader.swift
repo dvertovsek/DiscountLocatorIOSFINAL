@@ -21,12 +21,13 @@ public class WebServiceDataLoader:DataLoader
     private var discountsLoaded: Bool = false
     private var storesLoaded: Bool = false
     
+    private var prefs = NSUserDefaults()
 
     
     public func LoadData() {
         var params:[String:String] = ["method": "getAll"]
-        if(NetConnection.Connection.isConnectedToNetwork()){
-            
+        if(NetConnection.Connection.isConnectedToNetwork() && prefs.boolForKey("EnableWebService")){
+            print("loadam s web servisa")
             HTTPRequest.sharedWSInstance.httprequest("http://cortex.foi.hr/mtl/courses/air/stores.php", params: params)
                         {
                             (result: AnyObject) in
@@ -43,6 +44,7 @@ public class WebServiceDataLoader:DataLoader
                     }
         }
         else {
+            print("loadam lokalno")
             self.showDataFromLocalDB()
         }
     }

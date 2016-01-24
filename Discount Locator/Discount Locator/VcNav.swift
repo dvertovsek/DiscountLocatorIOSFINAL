@@ -49,10 +49,7 @@ class VcNav:UIViewController{
             activeVC.didMoveToParentViewController(self)
         }
     }
-    func showView(content:UIViewController){
-         // TODO PRIKAZATI MAPE/STOREOVE UNUTAR KONTEJNERAScontainerView.
-    }
-    override func viewDidLoad() {
+       override func viewDidLoad() {
         super.viewDidLoad()
         firstViewController = UIStoryboard.firstViewController()
         secondViewController = UIStoryboard.secondViewController()
@@ -69,9 +66,9 @@ class VcNav:UIViewController{
         Open.action = Selector("revealToggle:")
         
        
-        //showView("stores")
+       
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        
+       
     }
     
     override func didReceiveMemoryWarning() {
