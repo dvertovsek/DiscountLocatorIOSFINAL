@@ -38,7 +38,8 @@ class DiscountsViewController: UITableViewController {
         
         var message = discounts![indexPath.row].desc + "\n\n"
         message += "📅 " + discounts![indexPath.row].startDate + "\n"
-        message +=  "📅 " + discounts![indexPath.row].endDate + "\n"
+        message +=  "📅 " + discounts![indexPath.row].endDate + "\n\n"
+        message +=  "🏪 " + discounts![indexPath.row].store!.name + "\n"
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.Default, handler: nil))
