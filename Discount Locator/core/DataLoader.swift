@@ -8,9 +8,25 @@
 
 import Foundation
 import db
-public protocol DataLoader
+public protocol OnDataLoadedDelegate {
+    func onDataLoaded(stores : [Store], discounts: [Discount])
+}
+public class DataLoader
 {
-    var stores:[Store]{get set}
-    var discounts:[Discount]{get set}
-    func LoadData()
+    public var stores:[Store]?
+    public var discounts:[Discount]?
+    public var onDataLoadedDelegate:OnDataLoadedDelegate?
+    
+    func LoadData() {}
+    public init(){}
+    public func dataLoaded() -> Bool {
+        if (stores==nil || discounts == nil) {
+            return false
+        }
+        else {
+            onDataLoadedDelegate?.onDataLoaded(stores!, discounts: discounts!)
+            return true
+        }
+    
+    }
 }

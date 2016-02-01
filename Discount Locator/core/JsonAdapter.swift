@@ -14,18 +14,19 @@ public class JsonAdapter
 {
     public static func getStores(json: AnyObject) -> Array<Store>
     {
+        print(json)
         var stores = [Store]()
         let jsonStores = JSON(json)
         
-        var items = jsonStores["items"]
+        let items = jsonStores["items"]
         var itemsString = String(items)
         
         itemsString = itemsString.stringByReplacingOccurrencesOfString(String(Character(UnicodeScalar(92))), withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
   
         if let dataFromString = itemsString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) {
             let json2 = JSON(data: dataFromString)
-            for (key, subJson) in json2 {
-                var s:Store = Store()
+            for (_, subJson) in json2 {
+                let s:Store = Store()
                 s.remoteId = Int(String(subJson["id"]))!
                 s.name = subJson["name"].string!
                 s.desc = subJson["description"].string!
@@ -52,9 +53,9 @@ public class JsonAdapter
     
         if let dataFromString = itemsString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) {
             let json2 = JSON(data: dataFromString)
-            for (key, subJson) in json2 {
+            for (_, subJson) in json2 {
                 
-                var d:Discount = Discount()
+                let d:Discount = Discount()
                 d.remoteId = Int(String(subJson["id"]))!
                 d.name = subJson["name"].string!
                 d.desc = subJson["description"].string!

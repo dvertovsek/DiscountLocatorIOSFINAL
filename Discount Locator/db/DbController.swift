@@ -7,13 +7,18 @@
 //
 
 import Foundation
-
 import RealmSwift
 
+public protocol DBResultDelegate{
+    func getStores(result:[Store])
+    func getDiscounts(result:[Discount])
+}
 public class DbController
 {
+    
     public static var sharedDBInstance = DbController()
     
+    public var dbResultDelegate:DBResultDelegate?
     public let realm = try! Realm()
     
     public func realmAdd(o: Object)
@@ -24,10 +29,15 @@ public class DbController
         }
     }
     
-    public func realmFetch(o: Object.Type) -> Results<Object>
+    public func realmFetchStores()
     {
-        let data = self.realm.objects(o)
-        return data
+        let data = self.realm.objects(Store)
+        dbResultDelegate?.getStores(data.reverse())
+    }
+    public func realmFetchDiscounts()
+    {
+        let data = self.realm.objects(Discount)
+        dbResultDelegate?.getDiscounts(data.reverse())
     }
 }
 

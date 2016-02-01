@@ -14,8 +14,7 @@ public protocol WebServiceResultDelegate{
 public class HTTPRequest
 {
     
-    public var delegate:WebServiceResultDelegate?
-    
+    public var wsResultDelegate:WebServiceResultDelegate?
     public init(){}
     
     public func httprequest(url: String, params: [String:String])
@@ -24,7 +23,7 @@ public class HTTPRequest
             .responseJSON { response in
                 if let json = response.result.value{
                 
-                    self.delegate?.getResult(json)
+                    self.wsResultDelegate?.getResult(json)
                 
                 }
         }

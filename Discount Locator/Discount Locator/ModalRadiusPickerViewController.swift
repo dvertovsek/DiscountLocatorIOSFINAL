@@ -18,7 +18,6 @@ class ModalRadiusPickerViewController: UIViewController, UIPickerViewDelegate,UI
     @IBAction func onClose(sender: UIButton) {
          let index = pickerDataSource.startIndex.advancedBy(pickerView.selectedRowInComponent(0)) //da se dobije index tipa DictionaryIndex, ne moze se direktno preko indexa tipa int
          prefs.setInteger(pickerDataSource.values[index], forKey: "StoreRadius")
-         print("setano je:",prefs.integerForKey(("StoreRadius")))
          self.dismissViewControllerAnimated(true, completion: nil);
     }
     func loadDefaultPickerValue(){
@@ -39,7 +38,6 @@ class ModalRadiusPickerViewController: UIViewController, UIPickerViewDelegate,UI
         self.pickerView.dataSource=self
         self.pickerView.delegate=self
         loadDefaultPickerValue()
-            // Do any additional setup after loading the view.
     }
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
@@ -53,8 +51,7 @@ class ModalRadiusPickerViewController: UIViewController, UIPickerViewDelegate,UI
         let index = pickerDataSource.startIndex.advancedBy(row) //vraca index
         return pickerDataSource.keys[index]
     }
-    //format the pickerView
-  
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

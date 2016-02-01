@@ -8,21 +8,20 @@
 
 import UIKit
 import db
-
+import core
 class SearchDiscountsTabeViewController: UITableViewController, UISearchResultsUpdating, UIGestureRecognizerDelegate{
     //implementiramo protokol UISearchResultsUpdating - jedina potrebna metoda je updateSearchResultsForSearchController te property koji uzimaUISearchController ()
     //protokol sluzi za implementaciju promjene stanja kad user upise nesto u search bar
     
     var discounts: [Discount] = []
+    var searchDataLoader = SearchDataLoader()
     var resultSearchController = UISearchController ()
-    var filteredDiscounts = [Discount]()
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        discounts = DbController.sharedDBInstance.realm.objects(Discount).reverse()
-        //custom backswipe pošto smo došli iz modalviewa na
+        searchDataLoader.onDataLoadedDelegate = self
+               //custom backswipe pošto smo došli iz modalviewa na
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         self.navigationController?.interactivePopGestureRecognizer?.addTarget(self, action: "handleGesture:")
         self.backSwipeCheck()
@@ -34,7 +33,8 @@ class SearchDiscountsTabeViewController: UITableViewController, UISearchResultsU
         self.tableView.tableHeaderView = self.resultSearchController.searchBar //stavljamo searchbar u zaglavlje tableviewa
         self.resultSearchController.searchBar.placeholder="search discounts..."
         definesPresentationContext=true //ako odeš na neki drugi ViewController search bar nece ostati tu
-        self.tableView.reloadData() //učitaj podatke
+        searchDataLoader.SearchData("")
+
     }
       
     override func didReceiveMemoryWarning() {
@@ -46,52 +46,23 @@ class SearchDiscountsTabeViewController: UITableViewController, UISearchResultsU
              performSegueWithIdentifier("searchToRevealSegue", sender: self)
         }
     }
-    func alreadyExists(keyDiscount:Discount)->Bool{
-        for discount in filteredDiscounts {
-            if(discount.name==keyDiscount.name) {
-                return true;
-            }
-        }
-        return false;
-    }
-    //helper funkcija kod filtriranja discountova
+        //helper funkcija kod filtriranja discountova
     func filterContentForSearchText(searchText: String, scope: String = "All") { //pretrazivanje po imenu discounta i po descriptionu
         //filter() takes a closure of type (discount: Discount) -> Bool. It then loops over all the elements of the array, and calls the closure, passing in the current element, for every one of the elements.
-        filteredDiscounts = discounts.filter { discount in
-            return discount.name.lowercaseString.containsString(searchText.lowercaseString)
-        }
+        
         //dodaj u filtar i description (posto u njemu moze pisati artikl ili nesto slicno)
-        filteredDiscounts.appendContentsOf(discounts.filter { discount in
-                    if(!self.alreadyExists(discount)){
-                        return discount.description.lowercaseString.containsString(searchText.lowercaseString)
-                    }
-                    else {
-                        return false
-                    }
-            
-            }
-        )
-        tableView.reloadData() //pozivaju se 2 donje metode tableView
+        searchDataLoader.SearchData(searchText)
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.resultSearchController.active && resultSearchController.searchBar.text != "" {
-            return self.filteredDiscounts.count
-        }
         return self.discounts.count
-        
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = self.tableView.dequeueReusableCellWithIdentifier("DiscountCell", forIndexPath: indexPath) as UITableViewCell
         let discount: Discount
-        if(self.resultSearchController.active && resultSearchController.searchBar.text != "") {
-            discount = filteredDiscounts[indexPath.row]
-        }
-        else {
-            discount = discounts[indexPath.row]
-        }
+        discount = discounts[indexPath.row]
         cell.textLabel!.text = discount.name
         cell.detailTextLabel!.text = discount.desc
         return cell
@@ -118,4 +89,10 @@ class SearchDiscountsTabeViewController: UITableViewController, UISearchResultsU
         print(indexPath.row)
     }
 
+}
+extension SearchDiscountsTabeViewController: OnDataLoadedDelegate {
+    func onDataLoaded(stores: [Store], discounts: [Discount]) {
+        self.discounts=discounts
+        tableView.reloadData() //pozivaju se 2 metode tableView
+    }
 }
