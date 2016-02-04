@@ -14,7 +14,7 @@ import RealmSwift
 
 public class DBDataLoader:DataLoader {
     
-    public func LoadData(){
+    public override func LoadData(){
         DbController.sharedDBInstance.dbResultDelegate = self
         showDataFromLocalDB()
     }
